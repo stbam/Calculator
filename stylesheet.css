@@ -1,50 +1,64 @@
+html,#title{
+    display: flex;
+    justify-content: center;
+  
+}
 .screen{
     border-radius: 10px;
-    width: 350px;
+    width: 300px;
     height: 75px;
     border: solid black;
     margin: 10px;
 }
 .calc-frame{
-    width:450px;
-    height: 600px;
+    
+    width:400px;
+    height: 500px;
     border: solid black;
     border-radius: 1rem;
 }
 .sub-section{
     display: flex;
-    justify-content: center;
+justify-content: center;
+    height: 380px;
+
+}
+.section-wrapper{
     display: flex;
-    height: 450px;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 .button-section{
+    display: flex;
+    justify-content: center;
     padding: 5px;
-    width: 200px;
+    width: 350px;
     height: auto;
     border: solid black; 
-    
+    border-radius: 10px;
 }
 .outer-screen{
     display: flex;
     justify-content: center;
 }
-.operators{ 
-   
-    width: 150px;
-    height: auto;
-    border:solid black;    
-}
+
 .operators,.button-section{
     padding: 5px;
     
 }
+
+.button,.operator-button{
+    height: 60px;
+    width: 70px;
+    margin-top: 10px;
+    margin: 5px;
+}
+#equal-btn{
+    width: 140px;
+}
 .sub{
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
-}
-.button,.operator-button{
-    height: 50px;
-    width: 60px;
-    margin-top: 10px;
+    justify-content: space-between;
+    
 }
