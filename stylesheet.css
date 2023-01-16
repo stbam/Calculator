@@ -1,0 +1,50 @@
+.screen{
+    border-radius: 10px;
+    width: 350px;
+    height: 75px;
+    border: solid black;
+    margin: 10px;
+}
+.calc-frame{
+    width:450px;
+    height: 600px;
+    border: solid black;
+    border-radius: 1rem;
+}
+.sub-section{
+    display: flex;
+    justify-content: center;
+    display: flex;
+    height: 450px;
+}
+.button-section{
+    padding: 5px;
+    width: 200px;
+    height: auto;
+    border: solid black; 
+    
+}
+.outer-screen{
+    display: flex;
+    justify-content: center;
+}
+.operators{ 
+   
+    width: 150px;
+    height: auto;
+    border:solid black;    
+}
+.operators,.button-section{
+    padding: 5px;
+    
+}
+.sub{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+.button,.operator-button{
+    height: 50px;
+    width: 60px;
+    margin-top: 10px;
+}
