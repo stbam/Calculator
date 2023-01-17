@@ -5,7 +5,11 @@ const section= document.querySelectorAll('.sub')[0];//Bug when clicking outside 
 var max_11_count=0;//a counter that allows maximum 11 numbers on screen to preven overflow outside
 var storage='';
 var checksigncount=0;
+let arr=['+','-','/'];
 var result=0;
+var opene=true;
+var operator_storage;
+
 section.addEventListener('click',event=>{
     console.log(event.target)
     
@@ -13,126 +17,58 @@ if(document.querySelector('.sub')==event.target){//the if else here filters out 
     console.log('bbbb') 
 }
 else{
-   
+   if(event.target.innerHTML<10){ //removed case switch for a much more shorter version.
+    if(max_11_count!=11 ){
+        screen.innerHTML+=event.target.innerHTML;
+        storage+=event.target.innerHTML;
+        max_11_count++;
+        if(checksigncount!=0){
+            if(operator_storage=='+'){
+                result=parseInt(storage) + parseInt(event.target.innerHTML); //holy shit it works
+                storage='';
+            }
+            else if(operator_storage =='-'){
+                result=parseInt(storage) - parseInt(event.target.innerHTML);
+                storage='';
+            }
+            else if(operator_storage =='*'){
+                result=parseInt(storage) * parseInt(event.target.innerHTML);
+                storage='';
+            }
+            else if(operator_storage=='/'){
+                result=parseInt(storage) / parseInt(event.target.innerHTML);
+                storage='';
+            }
+
+        }
+
+        checksigncount=0;
+        }
+   }
+   for(let i=0;i<arr.length;i++){
+        if(event.target.innerHTML==arr[i] && checksigncount==0 && storage !=0){
+            console.log("bobby");                               //is used.
+                storage+=`${event.target.innerHTML}`;
+                screen.innerHTML='';
+                max_11_count=0;
+                operator_storage=event.target.innerHTML;
+                checksigncount++;
+                opene=false;
+                
+        }
+    }
     
+
+
+
     switch(event.target.innerHTML){
-        case '0' :
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '1':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '2':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '3':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '4':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '5':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '6':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '7':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '8':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
-        case '9':
-            if(max_11_count!=11 ){
-            screen.innerHTML+=event.target.innerHTML;
-            storage+=event.target.innerHTML;
-            max_11_count++;
-            checksigncount=0;
-            }
-            break;
         case 'clear':
             if(event.target.innerHTML=='clear'){
                 screen.innerHTML='';
                 max_11_count=0;
+                
             }
-        case '+':
-            if(event.target.innerHTML=='+' &&  checksigncount==0 && storage !=0){// checksign count makes sure only operator 
-                console.log("bobby");                               //is used.
-                storage+='+';
-                screen.innerHTML='';
-                max_11_count=0;
-                checksigncount++;
-            }
-        case '-':
-            if(event.target.innerHTML=='-' &&  checksigncount==0 && storage !=0){// checksign count makes sure only operator 
-                console.log("bobby");                               //is used.
-                storage+='-';
-                screen.innerHTML='';
-                max_11_count=0;
-                checksigncount++;
-            }
-        case '*':
-            if(event.target.innerHTML=='*' &&  checksigncount==0 && storage !=0){// checksign count makes sure only operator 
-                console.log("bobby");                               //is used.
-                storage+='*';   //`${event.target.innerHTML}`
-                screen.innerHTML='';
-                max_11_count=0;
-                checksigncount++;
-            }
-        case '/':
-            if(event.target.innerHTML=='/' &&  checksigncount==0 && storage !=0){// checksign count makes sure only operator 
-                console.log("bobby");                               //is used.
-                storage+='/';
-                screen.innerHTML='';
-                max_11_count=0;
-                checksigncount++;
-            }
+       
         case 'sqrt':
             if(event.target.innerHTML=='sqrt' &&  checksigncount==0){// output error if nothing given after call.
                 console.log("bobby");                               
@@ -141,14 +77,11 @@ else{
                 max_11_count=0;
                 checksigncount++;
             }
-      /*  case '=':
-            let arr=storage;
-            console.log(arr);
-            for(let i=0;i<arr.length;i++){
-                if(arr[i]=='+' || arr[i]=='-'){
-                    
-                }
-            }
+        case '=':
+            screen.innerHTML=result;
+
+        
+        
 
     }
 
